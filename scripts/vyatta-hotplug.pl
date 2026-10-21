@@ -25,11 +25,12 @@ my $fabric;
 my $pcislot;
 my $act;
 
-GetOptions( 'fabric=s'  => \$fabric, 
-            'act=s'     => \$act, 
-            'pcislot=s' => \$pcislot, 
+GetOptions(
+    'fabric=s'  => \$fabric,
+    'act=s'     => \$act,
+    'pcislot=s' => \$pcislot,
 ) or usage();
 
 my ( $dpids, $dpsocks, $localcontroller ) = Vyatta::Dataplane::setup_fabric_conns();
-vplane_exec_cmd("hotplug $act $pcislot", $dpids, $dpsocks, 0);
-Vyatta::Dataplane::close_fabric_conns($dpids, $dpsocks);
+vplane_exec_cmd( "hotplug $act $pcislot", $dpids, $dpsocks, 0 );
+Vyatta::Dataplane::close_fabric_conns( $dpids, $dpsocks );
